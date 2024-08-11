@@ -13,4 +13,8 @@ public class Player {
     private Long id;
     @Column(name = "name")
     private String name;
+
+    public Player(String name) {
+        this.name = name;
+    }
 }
