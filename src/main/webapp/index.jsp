@@ -2,12 +2,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title>Tennis scoreboard</title>
 </head>
-<body>
-<h1><%= "Hello World!" %>
-</h1>
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
-</body>
+    <body>
+        <a href="/tennis_scoreboard/new_match">Начать новый матч</a>
+    </body>
 </html>
