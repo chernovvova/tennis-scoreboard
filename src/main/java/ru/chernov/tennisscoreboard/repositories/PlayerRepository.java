@@ -1,6 +1,7 @@
 package ru.chernov.tennisscoreboard.repositories;
 
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import ru.chernov.tennisscoreboard.models.Player;
 import ru.chernov.tennisscoreboard.utils.HibernateUtil;
 
@@ -56,5 +57,18 @@ public class PlayerRepository implements CrudRepository<Player> {
             session.merge(player);
             session.getTransaction().commit();
         }
+    }
+
+    public Optional<Player> findByName(String name) {
+        Optional<Player> player = Optional.empty();
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            session.beginTransaction();
+            String hql = "from Player where name = :name";
+            Query<Player> query = session.createQuery(hql, Player.class);
+            query.setParameter("name", name);
+            player = Optional.of(query.uniqueResult());
+            session.getTransaction().commit();
+        }
+        return player;
     }
 }
