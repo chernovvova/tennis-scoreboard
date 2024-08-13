@@ -2,10 +2,12 @@ package ru.chernov.tennisscoreboard.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "matches")
 @Data
+@NoArgsConstructor
 public class Match {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,4 +22,9 @@ public class Match {
     @JoinColumn(name = "winner", referencedColumnName = "id")
     private Player winner;
 
+
+    public Match(Player player1, Player player2) {
+        this.player1 = player1;
+        this.player2 = player2;
+    }
 }
