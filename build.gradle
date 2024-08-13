@@ -17,6 +17,10 @@ ext {
 sourceCompatibility = '11'
 targetCompatibility = '11'
 
+war {
+    archiveFileName = "tennis-scoreboard.war"
+}
+
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
