@@ -21,7 +21,7 @@ public class SetScore extends Score<Integer>{
         }
 
         if(currentGameState == MatchState.PLAYER_TWO_WON) {
-            int opponentPlayerNumber = pointWinnerNumber == 0 ? 1 : 0;
+            int opponentPlayerNumber = getOpponentNumber(pointWinnerNumber);
             return gameWon(opponentPlayerNumber);
         }
 
