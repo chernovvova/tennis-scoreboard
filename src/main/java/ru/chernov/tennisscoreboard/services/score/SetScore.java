@@ -3,7 +3,7 @@ package ru.chernov.tennisscoreboard.services.score;
 public class SetScore extends Score<Integer>{
     private GameScore<?> currentGameScore;
 
-    public SetScore(RegularGameScore currentGameScore) {
+    public SetScore() {
         this.currentGameScore = currentGameScore;
     }
 
