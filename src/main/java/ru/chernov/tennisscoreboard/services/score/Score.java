@@ -22,8 +22,7 @@ public abstract class Score<T> {
     }
 
     public T getOpponentScore(int playerNumber) {
-        int opponentNumber = playerNumber == 0 ? 1 : 0;
-        return score.get(opponentNumber);
+        return score.get(getOpponentNumber(playerNumber));
     }
 
     public void setPlayerScore(T newScore, int playerNumber) {
@@ -31,8 +30,7 @@ public abstract class Score<T> {
     }
 
     public void setOpponentScore(T newScore, int playerNumber) {
-        int opponentNumber = playerNumber == 0 ? 1 : 0;
-        score.set(opponentNumber, newScore);
+        score.set(getOpponentNumber(playerNumber), newScore);
     }
 
     public abstract MatchState winCalculation(int pointWinnerNumber);
