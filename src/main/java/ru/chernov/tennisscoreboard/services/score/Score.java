@@ -31,5 +31,5 @@ public abstract class Score<T> {
         score.set(opponentNumber, newScore);
     }
 
-    public abstract MatchState pointWonCalculation(int pointWinnerNumber);
+    public abstract MatchState winCalculation(int pointWinnerNumber);
 }
