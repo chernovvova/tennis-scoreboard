@@ -19,7 +19,7 @@ public class RegularGameScore extends GameScore<RegularGamePoints>{
                 setOpponentScore(RegularGamePoints.FORTY, pointWinnerNumber);
             }
             else if (opponentScore == RegularGamePoints.FORTY) {
-                setPlayerScore(RegularGamePoints.FIFTEEN, pointWinnerNumber);
+                setPlayerScore(RegularGamePoints.ADVANTAGE, pointWinnerNumber);
             }
             else {
                 return MatchState.getWonStateByPlayerId(pointWinnerNumber);
