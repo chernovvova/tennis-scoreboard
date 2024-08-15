@@ -13,6 +13,10 @@ public abstract class Score<T> {
         score.add(getZeroScore());
     }
 
+    public int getOpponentNumber(int playerNumber) {
+        return playerNumber == 1 ? 0 : 1;
+    }
+
     public T getPlayerScore(int playerNumber) {
         return score.get(playerNumber);
     }
