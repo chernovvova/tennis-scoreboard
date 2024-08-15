@@ -1,6 +1,5 @@
 package ru.chernov.tennisscoreboard.utils;
 
-import org.h2.engine.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import ru.chernov.tennisscoreboard.models.Match;
