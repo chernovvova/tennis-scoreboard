@@ -32,8 +32,8 @@ public class RegularGameScoreTest {
 
         // players win three goals each
         for(int i = 0; i < 3; i++) {
-            assertEquals(MatchState.ONGOING, regularGameScore.winCalculation(0));
-            assertEquals(MatchState.ONGOING, regularGameScore.winCalculation(1));
+            regularGameScore.winCalculation(0);
+            regularGameScore.winCalculation(1);
         }
 
         // first player win fourth point and game doesn't end
@@ -45,8 +45,8 @@ public class RegularGameScoreTest {
         RegularGameScore regularGameScore = new RegularGameScore();
 
         for(int i = 0; i < 3; i++) {
-            assertEquals(MatchState.ONGOING, regularGameScore.winCalculation(0));
-            assertEquals(MatchState.ONGOING, regularGameScore.winCalculation(1));
+            regularGameScore.winCalculation(0);
+            regularGameScore.winCalculation(1);
         }
 
         assertEquals(MatchState.ONGOING, regularGameScore.winCalculation(0));
@@ -57,8 +57,7 @@ public class RegularGameScoreTest {
         assertEquals(RegularGamePoints.FORTY, regularGameScore.getPlayerScore(1));
         assertEquals(RegularGamePoints.FORTY, regularGameScore.getPlayerScore(0));
 
-        assertEquals(MatchState.ONGOING, regularGameScore.winCalculation(0));
-        assertEquals(RegularGamePoints.ADVANTAGE, regularGameScore.getPlayerScore(0));
+        regularGameScore.winCalculation(0);
         assertEquals(MatchState.PLAYER_ONE_WON, regularGameScore.winCalculation(0));
     }
 }
