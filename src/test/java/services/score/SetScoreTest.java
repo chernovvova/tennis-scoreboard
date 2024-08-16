@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import ru.chernov.tennisscoreboard.services.score.MatchState;
 import ru.chernov.tennisscoreboard.services.score.SetScore;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class SetScoreTest {
 
@@ -17,5 +17,24 @@ public class SetScoreTest {
         }
 
         assertEquals(MatchState.PLAYER_ONE_WON, setScore.winCalculation(0));
+    }
+
+    @Test
+    public void TestTieBreak() {
+        SetScore setScore = new SetScore();
+
+        setScore.setPlayerScore(6,0);
+        for (int i = 0; i < 23; i++) {
+            setScore.winCalculation(1);
+        }
+
+        assertEquals(MatchState.ONGOING, setScore.winCalculation(1));
+
+        for(int i = 0; i < 6; i++) {
+            assertEquals(MatchState.ONGOING, setScore.winCalculation(0));
+        }
+
+        assertEquals(MatchState.PLAYER_ONE_WON, setScore.winCalculation(0));
+
     }
 }
