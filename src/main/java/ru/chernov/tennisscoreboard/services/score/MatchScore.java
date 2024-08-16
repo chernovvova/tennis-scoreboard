@@ -18,13 +18,8 @@ public class MatchScore extends Score<Integer>{
     public MatchState winCalculation(int pointWinnerNumber) {
         MatchState currentSetState = currentSetScore.winCalculation(pointWinnerNumber);
 
-        if(currentSetState == MatchState.PLAYER_ONE_WON) {
+        if(currentSetState == MatchState.PLAYER_ONE_WON || currentSetState == MatchState.PLAYER_TWO_WON) {
             return setWon(pointWinnerNumber);
-        }
-
-        if(currentSetState == MatchState.PLAYER_TWO_WON){
-            int oppositePlayerNumber = getOpponentNumber(pointWinnerNumber);
-            return setWon(oppositePlayerNumber);
         }
 
         return MatchState.ONGOING;
