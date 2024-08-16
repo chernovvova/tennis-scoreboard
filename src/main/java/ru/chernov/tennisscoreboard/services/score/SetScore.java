@@ -1,15 +1,18 @@
 package ru.chernov.tennisscoreboard.services.score;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
 public class SetScore extends Score<Integer>{
     private GameScore<?> currentGameScore;
 
     public SetScore() {
         this.currentGameScore = new RegularGameScore();
+    }
+
+    public void setCurrentGameScore(GameScore<?> currentGameScore) {
+        this.currentGameScore = currentGameScore;
+    }
+
+    public GameScore<?> getCurrentGameScore() {
+        return currentGameScore;
     }
 
     @Override
@@ -21,13 +24,8 @@ public class SetScore extends Score<Integer>{
     public MatchState winCalculation(int pointWinnerNumber) {
         MatchState currentGameState = currentGameScore.winCalculation(pointWinnerNumber);
 
-        if(currentGameState == MatchState.PLAYER_ONE_WON) {
+        if(currentGameState == MatchState.PLAYER_ONE_WON || currentGameState == MatchState.PLAYER_TWO_WON) {
             return gameWon(pointWinnerNumber);
-        }
-
-        if(currentGameState == MatchState.PLAYER_TWO_WON) {
-            int opponentPlayerNumber = getOpponentNumber(pointWinnerNumber);
-            return gameWon(opponentPlayerNumber);
         }
 
         return MatchState.ONGOING;
