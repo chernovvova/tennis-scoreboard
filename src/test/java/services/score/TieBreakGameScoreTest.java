@@ -20,4 +20,16 @@ public class TieBreakGameScoreTest {
         assertEquals(MatchState.ONGOING, tieBreakGameScore.winCalculation(0));
         assertEquals(MatchState.PLAYER_ONE_WON, tieBreakGameScore.winCalculation(0));
     }
+
+    @Test
+    public void TestSixSevenScore() {
+        TieBreakGameScore tieBreakGameScore = new TieBreakGameScore();
+
+        for (int i = 0; i < 6; i++) {
+            tieBreakGameScore.winCalculation(0);
+            tieBreakGameScore.winCalculation(1);
+        }
+
+        assertEquals(MatchState.ONGOING, tieBreakGameScore.winCalculation(0));
+    }
 }
