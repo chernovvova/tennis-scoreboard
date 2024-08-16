@@ -20,6 +20,20 @@ public class SetScoreTest {
     }
 
     @Test
+    public void TestFiveSixScore() {
+        SetScore setScore = new SetScore();
+
+        setScore.setPlayerScore(5, 0);
+        setScore.setPlayerScore(5, 1);
+
+        for(int i = 0; i < 3; i++) {
+            setScore.winCalculation(0);
+        }
+
+        assertEquals(MatchState.ONGOING, setScore.winCalculation(0));
+    }
+
+    @Test
     public void TestTieBreak() {
         SetScore setScore = new SetScore();
 
