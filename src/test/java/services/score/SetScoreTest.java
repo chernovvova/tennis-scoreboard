@@ -34,6 +34,20 @@ public class SetScoreTest {
     }
 
     @Test
+    public void TestSevenFiveScoreWin() {
+        SetScore setScore = new SetScore();
+
+        setScore.setPlayerScore(6, 0);
+        setScore.setPlayerScore(5, 1);
+
+        for(int i = 0; i < 3; i++) {
+            setScore.winCalculation(0);
+        }
+
+        assertEquals(MatchState.PLAYER_ONE_WON, setScore.winCalculation(0));
+    }
+
+    @Test
     public void TestTieBreak() {
         SetScore setScore = new SetScore();
 
