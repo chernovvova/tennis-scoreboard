@@ -26,9 +26,8 @@ public class MatchScore extends Score<Integer>{
     }
 
     private MatchState setWon(int pointWinnerNumber) {
+        setPlayerScore(getPlayerScore(pointWinnerNumber) + 1, pointWinnerNumber);
         Integer playerScore = getPlayerScore(pointWinnerNumber);
-        playerScore++;
-        setPlayerScore(playerScore, pointWinnerNumber);
 
         if(playerScore == countSetsForWin) {
             return MatchState.getWonStateByPlayerId(pointWinnerNumber);
