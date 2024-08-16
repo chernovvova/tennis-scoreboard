@@ -9,10 +9,9 @@ public class TieBreakGameScore extends GameScore<Integer>{
 
     @Override
     public MatchState winCalculation(int pointWinnerNumber) {
+        setPlayerScore(getPlayerScore(pointWinnerNumber) + 1, pointWinnerNumber);
         Integer playerScore = getPlayerScore(pointWinnerNumber);
-        playerScore++;
         Integer opponentScore = getOpponentScore(pointWinnerNumber);
-        setPlayerScore(playerScore, pointWinnerNumber);
 
         if(playerScore > 6 && playerScore - opponentScore > 1) {
             return MatchState.getWonStateByPlayerId(pointWinnerNumber);

@@ -32,11 +32,9 @@ public class SetScore extends Score<Integer>{
     }
 
     private MatchState gameWon(int pointWinnerNumber) {
-        Integer playerGameScore = getPlayerScore(pointWinnerNumber);
-        playerGameScore++;
-        setPlayerScore(playerGameScore, pointWinnerNumber);
-        currentGameScore = new RegularGameScore();
+        setPlayerScore(getPlayerScore(pointWinnerNumber) + 1, pointWinnerNumber);
 
+        Integer playerGameScore = getPlayerScore(pointWinnerNumber);
         if(playerGameScore > 5) {
             Integer opponentGameScore = getOpponentScore(pointWinnerNumber);
 
@@ -54,6 +52,7 @@ public class SetScore extends Score<Integer>{
             }
         }
 
+        currentGameScore = new RegularGameScore();
         return MatchState.ONGOING;
     }
 }
