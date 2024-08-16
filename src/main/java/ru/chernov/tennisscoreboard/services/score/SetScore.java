@@ -1,10 +1,15 @@
 package ru.chernov.tennisscoreboard.services.score;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class SetScore extends Score<Integer>{
     private GameScore<?> currentGameScore;
 
     public SetScore() {
-        this.currentGameScore = currentGameScore;
+        this.currentGameScore = new RegularGameScore();
     }
 
     @Override
