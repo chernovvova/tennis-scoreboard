@@ -4,8 +4,8 @@ public class MatchScore extends Score<Integer>{
     private SetScore currentSetScore;
     private int countSetsForWin;
 
-    public MatchScore(SetScore currentSetScore, int countSetsForWin) {
-        this.currentSetScore = currentSetScore;
+    public MatchScore(int countSetsForWin) {
+        this.currentSetScore = new SetScore();
         this.countSetsForWin = countSetsForWin;
     }
 
