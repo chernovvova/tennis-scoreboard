@@ -1,6 +1,8 @@
 package ru.chernov.tennisscoreboard.services.score;
 
 public class MatchScore extends Score<Integer>{
+    public final static int DEFAULT_COUNT_SETS = 2;
+
     private SetScore currentSetScore;
     private int countSetsForWin;
 
