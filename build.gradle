@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'war'
+    id("io.freefair.lombok") version "8.10"
 }
 
 group 'ru.chernov'
@@ -30,11 +31,9 @@ dependencies {
     implementation('org.hibernate:hibernate-core:6.3.1.Final')
     implementation('org.glassfish.jaxb:jaxb-runtime:4.0.3')
 
-
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 
-    compileOnly("org.projectlombok:lombok:1.18.34")
     testImplementation("com.h2database:h2:2.3.230")
 }
 
