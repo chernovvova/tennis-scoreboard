@@ -33,4 +33,11 @@ public class Match {
         this.player2 = player2;
         this.matchScore = new MatchScore(MatchScore.DEFAULT_COUNT_SETS);
     }
+
+    public Match(Player player1, Player player2, Player winner) {
+        this.player1 = player1;
+        this.player2 = player2;
+        this.winner = winner;
+        this.matchScore = new MatchScore(MatchScore.DEFAULT_COUNT_SETS);
+    }
 }
