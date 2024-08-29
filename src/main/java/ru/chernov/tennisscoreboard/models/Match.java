@@ -3,7 +3,6 @@ package ru.chernov.tennisscoreboard.models;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 import ru.chernov.tennisscoreboard.services.score.MatchScore;
 
 @Entity
@@ -20,8 +19,8 @@ public class Match {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "player2", referencedColumnName = "id")
     private Player player2;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "winner", referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name = "winner", updatable = false, insertable = false)
     private Player winner;
 
     @Transient
