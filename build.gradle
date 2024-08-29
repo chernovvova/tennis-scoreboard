@@ -36,7 +36,8 @@ dependencies {
 
     testImplementation("com.h2database:h2:2.3.230")
 
-    implementation("jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.0")
+    implementation("org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.1")
+    implementation("org.eclipse.jetty:apache-jstl:11.0.0")
 }
 
 test {
