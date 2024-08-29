@@ -1,14 +1,26 @@
 package ru.chernov.tennisscoreboard.services.score;
 
+import lombok.Getter;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+@Getter
 public class MatchScore extends Score<Integer>{
     public final static int DEFAULT_COUNT_SETS = 2;
 
     private SetScore currentSetScore;
     private int countSetsForWin;
 
+    private final Map<Integer, List<Integer>> setsResults;
+
     public MatchScore(int countSetsForWin) {
         this.currentSetScore = new SetScore();
         this.countSetsForWin = countSetsForWin;
+
+        setsResults = new HashMap<>();
     }
 
     @Override
@@ -19,6 +31,12 @@ public class MatchScore extends Score<Integer>{
     @Override
     public MatchState winCalculation(int pointWinnerNumber) {
         MatchState currentSetState = currentSetScore.winCalculation(pointWinnerNumber);
+
+        List<Integer> score = new ArrayList<>();
+        score.add(currentSetScore.getPlayerScore(0));
+        score.add(currentSetScore.getPlayerScore(1));
+
+        setsResults.put(getPlayerScore(0) + getPlayerScore(1), score);
 
         if(currentSetState == MatchState.PLAYER_ONE_WON || currentSetState == MatchState.PLAYER_TWO_WON) {
             return setWon(pointWinnerNumber);
