@@ -5,6 +5,6 @@
     <title>Tennis scoreboard</title>
 </head>
     <body>
-        <a href="/tennis_scoreboard/new_match">Начать новый матч</a>
+        <a href="${pageContext.request.contextPath}/new_match">Начать новый матч</a>
     </body>
 </html>
