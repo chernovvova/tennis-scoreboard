@@ -56,4 +56,20 @@ public class MatchScore extends Score<Integer>{
         currentSetScore = new SetScore();
         return MatchState.ONGOING;
     }
+
+    public Integer getSetResults(int setNumber, int playerNumber){
+        try {
+            return setsResults.get(setNumber).get(playerNumber);
+        } catch (NullPointerException e) {
+            return -1;
+        }
+    }
+
+    public String getCurrentGameScore(int playerNumber) {
+        if(currentSetScore.getCurrentGameScore().getPlayerScore(playerNumber) instanceof RegularGamePoints) {
+            return ((RegularGamePoints) currentSetScore.getCurrentGameScore().getPlayerScore(playerNumber)).getCode();
+        }
+
+        return currentSetScore.getCurrentGameScore().getPlayerScore(playerNumber).toString();
+    }
 }
