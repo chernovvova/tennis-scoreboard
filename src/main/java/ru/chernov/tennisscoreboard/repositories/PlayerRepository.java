@@ -1,6 +1,7 @@
 package ru.chernov.tennisscoreboard.repositories;
 
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import ru.chernov.tennisscoreboard.models.Player;
 import ru.chernov.tennisscoreboard.utils.HibernateUtil;
@@ -42,12 +43,20 @@ public class PlayerRepository implements CrudRepository<Player> {
     }
 
     @Override
-    public void save(Player player) {
+    public Player save(Player player) {
+        Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()){
-            session.beginTransaction();
+            transaction = session.beginTransaction();
             session.persist(player);
-            session.getTransaction().commit();
+            transaction.commit();
+        } catch(Exception e){
+            if(transaction != null){
+                transaction.rollback();
+            }
+            e.printStackTrace();
         }
+
+        return player;
     }
 
     @Override
