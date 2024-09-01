@@ -32,12 +32,6 @@ public class MatchScore extends Score<Integer>{
     public MatchState winCalculation(int pointWinnerNumber) {
         MatchState currentSetState = currentSetScore.winCalculation(pointWinnerNumber);
 
-        List<Integer> score = new ArrayList<>();
-        score.add(currentSetScore.getPlayerScore(0));
-        score.add(currentSetScore.getPlayerScore(1));
-
-        setsResults.put(getPlayerScore(0) + getPlayerScore(1), score);
-
         if(currentSetState == MatchState.PLAYER_ONE_WON || currentSetState == MatchState.PLAYER_TWO_WON) {
             return setWon(pointWinnerNumber);
         }
@@ -48,6 +42,12 @@ public class MatchScore extends Score<Integer>{
     private MatchState setWon(int pointWinnerNumber) {
         setPlayerScore(getPlayerScore(pointWinnerNumber) + 1, pointWinnerNumber);
         Integer playerScore = getPlayerScore(pointWinnerNumber);
+
+        List<Integer> score = new ArrayList<>();
+        score.add(currentSetScore.getPlayerScore(0));
+        score.add(currentSetScore.getPlayerScore(1));
+
+        setsResults.put(getPlayerScore(0) + getPlayerScore(1), score);
 
         if(playerScore == countSetsForWin) {
             return MatchState.getWonStateByPlayerId(pointWinnerNumber);
