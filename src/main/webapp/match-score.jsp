@@ -219,7 +219,7 @@
                     <div style="background-color: lightgray; margin-bottom: 0px; margin-top: -10px; padding-bottom: 15px;">
 
                         <form action="end-match" method="post">
-                            <input type="hidden" value="${match.id}" name="uuid">
+                            <input type="hidden" value="${uuid}" name="uuid">
                             <button type="submit" class="card_button" style="font-size: 14px;">Continue</button>
                         </form>
                     </div>

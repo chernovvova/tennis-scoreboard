@@ -7,8 +7,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import ru.chernov.tennisscoreboard.models.Match;
 import ru.chernov.tennisscoreboard.models.Player;
-import ru.chernov.tennisscoreboard.repositories.MatchRepository;
 import ru.chernov.tennisscoreboard.services.OngoingMatchService;
+import ru.chernov.tennisscoreboard.services.SaveMatchService;
 import ru.chernov.tennisscoreboard.services.score.MatchState;
 
 import java.io.IOException;
@@ -16,8 +16,8 @@ import java.util.UUID;
 
 @WebServlet(name = "MatchScoreServlet", urlPatterns = "/match-score")
 public class MatchScoreServlet extends HttpServlet {
-    OngoingMatchService ongoingMatchService = new OngoingMatchService();
-    MatchRepository matchRepository = new MatchRepository();
+    private final OngoingMatchService ongoingMatchService = new OngoingMatchService();
+    private final SaveMatchService matchSaveService = new SaveMatchService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,6 +26,7 @@ public class MatchScoreServlet extends HttpServlet {
         Player p = match.getWinner();
         System.out.println(p);
         req.setAttribute("match", match);
+        req.setAttribute("uuid", uuid);
         req.getRequestDispatcher("match-score.jsp").forward(req, resp);
     }
 
