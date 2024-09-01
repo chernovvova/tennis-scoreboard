@@ -4,11 +4,11 @@
 
 # Используемые технологии
 
-– Gradle
-- Java Servlets, JSP
-- HTML, CSS
-- Hibernate, H2
-– JUnit5
+* Gradle
+* Java Servlets, JSP
+* HTML, CSS
+* Hibernate, H2
+* JUnit5
 
 # Функционал
 
