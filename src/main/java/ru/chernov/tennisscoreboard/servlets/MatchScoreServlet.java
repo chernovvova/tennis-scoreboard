@@ -40,13 +40,13 @@ public class MatchScoreServlet extends HttpServlet {
         if(isPlayer1Won) {
             if(match.getMatchScore().winCalculation(0) == MatchState.PLAYER_ONE_WON) {
                 match.setWinner(match.getPlayer1());
-                matchRepository.save(match);
+                matchSaveService.saveMatch(match);
             }
         }
         else {
             if(match.getMatchScore().winCalculation(1) == MatchState.PLAYER_TWO_WON) {
                 match.setWinner(match.getPlayer2());
-                matchRepository.save(match);
+                matchSaveService.saveMatch(match);
             }
         }
 
